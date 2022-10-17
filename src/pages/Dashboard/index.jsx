@@ -43,7 +43,7 @@ export const Dashboard = () => {
     })
     
     useEffect(()=>{
-        fetchGames({gameTime: currentDate})
+        fetchHunches()
     },[currentDate])
 
     if (!auth.user?.id){
