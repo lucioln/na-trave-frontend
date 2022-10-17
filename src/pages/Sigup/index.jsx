@@ -28,7 +28,7 @@ export const SignUp = () => {
            })
            alert("Usuário Cadastrado");
            window.localStorage.setItem('auth', JSON.stringify(res.data))
-           window.location.replace(`${import.meta.env.VITE_API_URL}/login`)
+           window.location.replace(`${import.meta.env.VITE_URL}/login`)
 
         },
         initialValues:{
