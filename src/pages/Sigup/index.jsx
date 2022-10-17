@@ -4,6 +4,7 @@ import * as yup from 'yup'
 import { Navigate } from 'react-router-dom'
 import { useLocalStorage} from 'react-use'
 
+
 import { Icon, Input } from "~/components"
 
 export const SignUp = () => {
@@ -25,8 +26,9 @@ export const SignUp = () => {
             url: '/users',
             data: values
            })
-           
+           alert("Usuário Cadastrado");
            window.localStorage.setItem('auth', JSON.stringify(res.data))
+           window.location.replace(`${import.meta.env.VITE_API_URL}/login`)
 
         },
         initialValues:{
@@ -37,11 +39,7 @@ export const SignUp = () => {
         },
         validationSchema
     })
-
-    if (auth.user?.id){
-        return <Navigate to='/dashboard' replace={true} />
-    }
-
+    
     return (
         <div className="">
       
