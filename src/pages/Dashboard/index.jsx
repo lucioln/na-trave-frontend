@@ -2,13 +2,14 @@ import {Icon, Card, DateSelect  } from '~/components';
 
 import { useEffect, useState } from 'react';
 import {useLocalStorage, useAsyncFn} from 'react-use'
-import { Navigate } from 'react-router-dom'
+import { useParams, Navigate } from 'react-router-dom'
 import axios from 'axios'
 
 import {format, formatISO} from 'date-fns'
 
 
 export const Dashboard = () => {
+    const params = useParams()
     const [currentDate, setDate] = useState(formatISO(new Date(2022,10,20)))
     const [auth] = useLocalStorage('auth', {})
 
