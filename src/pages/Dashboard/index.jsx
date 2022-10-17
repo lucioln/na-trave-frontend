@@ -10,7 +10,7 @@ import {format, formatISO} from 'date-fns'
 
 
 
-export const Profile = () => {
+export const Dashboard = () => {
     const params = useParams()
     const navigate = useNavigate()
     const [currentDate, setDate] = useState(formatISO(new Date(2022,10,20)))
@@ -20,7 +20,7 @@ export const Profile = () => {
         const res = await axios({
             method: 'get',
             baseURL: import.meta.env.VITE_API_URL,
-            url: `/${params.username}`,
+            url: `/${user.username}`,
         })
         
         const hunches = res.data.hunches.reduce((acc, hunch)=> {
@@ -54,7 +54,7 @@ export const Profile = () => {
     },[currentDate])
 
     const isLoading = games.loading || loading
-    const isError = games.error || error
+    const isError = games.error 
     const isDone = !isLoading && !isError
 
     
@@ -102,7 +102,7 @@ export const Profile = () => {
                                 gameTime={format(new Date(game.gameTime), 'H:mm')}
                                 homeTeamScore={user?.hunches?.[game.id]?.homeTeamScore || ''}
                                 awayTeamScore={user?.hunches?.[game.id]?.awayTeamScore || ''}
-                                disabled={false}
+                                
                             /> 
                         )}
                     </div>
